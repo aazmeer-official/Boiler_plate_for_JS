@@ -6,6 +6,7 @@ const path = require("path");
 const methodOverride = require('method-override');
 const { faker } = require('@faker-js/faker');
 const { v4:uuidv4 } = require('uuid');
+const ejsMate = require('ejs-mate');
 const mysql = require('mysql2'); // Requiring MYSQL2
 // EXPRESS REQUIREMENTS
 

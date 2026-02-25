@@ -3,10 +3,9 @@ const express = require("express");
 const app = express();
 const port = 8080;
 const path = require("path");
-const methodOverride = require('method-override');
-const { faker } = require('@faker-js/faker');
-const mongoose = require('mongoose');
-const ejsMate = require('ejs-mate');
+const methodOverride = require('method-override'); // FOr using PUt,DELETE Request
+const mongoose = require('mongoose'); //For connecting MONGODB
+const ejsMate = require('ejs-mate'); //For Better Templating EJS-MATE
 const Chat = require("./models/chat.js")
 
 // EXPRESS REQUIREMENTS
