@@ -6,6 +6,7 @@ const path = require("path");
 const methodOverride = require('method-override');
 const { faker } = require('@faker-js/faker');
 const mongoose = require('mongoose');
+const ejsMate = require('ejs-mate');
 const Chat = require("./models/chat.js")
 
 // EXPRESS REQUIREMENTS
@@ -15,6 +16,9 @@ app.set("view engine", "ejs") //For setting view engine
 app.set("views",path.join(__dirname,"views")) //For conecting views folder
 app.use(express.static(path.join(__dirname,"public"))) // For connecting Public Folder
 app.use(methodOverride('_method'))
+
+// use ejs-locals for all ejs templates:
+app.engine('ejs', ejsMate);
 
 // DATABASE REQUIREMENTS
 
