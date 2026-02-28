@@ -7,7 +7,8 @@ const methodOverride = require('method-override'); // FOr using PUt,DELETE Reque
 const mongoose = require('mongoose'); //For connecting MONGODB
 const ejsMate = require('ejs-mate'); //For Better Templating EJS-MATE
 const Chat = require("./models/chat.js") // For mongoose models
-const ExpressError = require("./ExpressError.js") // for ExpressError which is custom Error > Class
+const wrapAsync = require("./utils/wrapAsync.js") // In replacement of Try,Catch
+const ExpressError = require("./utils/ExpressError.js") // for ExpressError which is custom Error > Class
 
 // EXPRESS REQUIREMENTS
 
@@ -38,16 +39,6 @@ async function main() {
   await mongoose.connect('mongodb://127.0.0.1:27017/whatsapp');
 }
 
-let chat1 = new Chat({
-    from:"Aazmeer",
-    to: "ruhab",
-    message:"Send me the notes",
-    created_at: new Date()
-})
-
-chat1.save().then((res)=>{
-    console.log(res)
-})
 // Express App
 
 app.get("/",(req,res)=>{
