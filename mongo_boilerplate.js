@@ -54,6 +54,21 @@ app.get("/",(req,res)=>{
     res.send("Response")
 })
 
+// 404 Page Error Throw 
+// If the user is sending the request on any page which doesnot exist so we will use it
+// app.all with * will check all above routes first and then will give the response if any of the above response doesnot match 
+
+
+// We learnt a new thing Express k purany version meen woh "*" ko use kr leta tha ab nhi ab is k lye you have to use /.*/ is sy us ko yeh pta lg jay ga that it is originally Regular Expression he 
+
+// 404 Page Error Throw 
+// Use a regex literal (no quotes) to bypass the strict string parser
+app.all(/.*/, (req, res, next) => {
+    next(new ExpressError(404, "Page Not Found!"));
+});
+
+
+
 // Error Handling middleware
 app.use((err,req,res,next)=>{
     let{status=500,message} = err;
