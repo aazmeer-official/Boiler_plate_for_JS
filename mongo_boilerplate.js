@@ -6,7 +6,8 @@ const path = require("path");
 const methodOverride = require('method-override'); // FOr using PUt,DELETE Request
 const mongoose = require('mongoose'); //For connecting MONGODB
 const ejsMate = require('ejs-mate'); //For Better Templating EJS-MATE
-const Chat = require("./models/chat.js")
+const Chat = require("./models/chat.js") // For mongoose models
+const ExpressError = require("./ExpressError.js") // for ExpressError which is custom Error > Class
 
 // EXPRESS REQUIREMENTS
 
@@ -18,6 +19,14 @@ app.use(methodOverride('_method'))
 
 // use ejs-locals for all ejs templates:
 app.engine('ejs', ejsMate);
+
+// asyncWrap Function
+function asyncWrap(fn){
+    return function(req,res,next){
+         fn(req,res,next).catch((err)=> next(err));
+    }
+}
+
 
 // DATABASE REQUIREMENTS
 
@@ -43,6 +52,13 @@ chat1.save().then((res)=>{
 
 app.get("/",(req,res)=>{
     res.send("Response")
+})
+
+// Error Handling middleware
+app.use((err,req,res,next)=>{
+    let{status=500,message} = err;
+    res.status(status).send(message)
+    next()
 })
 
 app.listen(port,()=>{
