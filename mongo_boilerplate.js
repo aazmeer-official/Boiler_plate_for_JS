@@ -9,6 +9,7 @@ const ejsMate = require('ejs-mate'); //For Better Templating EJS-MATE
 const Chat = require("./models/chat.js") // For mongoose models
 const wrapAsync = require("./utils/wrapAsync.js") // In replacement of Try,Catch
 const ExpressError = require("./utils/ExpressError.js") // for ExpressError which is custom Error > Class
+const Joi = require('joi'); //Schema Validation
 
 // EXPRESS REQUIREMENTS
 
