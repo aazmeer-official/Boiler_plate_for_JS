@@ -13,16 +13,7 @@ Starter boilerplate for **Node.js + Express.js** projects with **EJS templates**
 - Public folder static setup  
 - Method override support  
 - MySQL database connection  
-- Faker.js for dummy data  
-- UUID for unique IDs  
-
----
-
-## Installation
-```bash
-git clone https://github.com/aazmeer-official/Boiler_plate_for_JS.git
-cd Boiler_plate_for_JS
-npm install express ejs mysql method-override @faker-js/faker uuid
-
-
+- MongoDB database connection
+- Joi Connection
+- Addition of middlewares 
 
