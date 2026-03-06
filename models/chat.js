@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { kMaxLength } = require('node:buffer');
 
 const chatSchema = new mongoose.Schema({
     from : {
@@ -24,3 +23,4 @@ const chatSchema = new mongoose.Schema({
 const Chat = mongoose.model("Chat",chatSchema);
 
 module.exports = Chat;
+
